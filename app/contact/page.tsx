@@ -1,16 +1,35 @@
-"use client"
-
-import { ArrowLeft, Mail, MessageCircle, Star, Linkedin } from "lucide-react"
+import { ArrowLeft, Mail, MessageCircle, Star, Linkedin, Github, Twitter } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { useState } from "react"
 
 export default function ContactPage() {
-  const [showLinkedInInfo, setShowLinkedInInfo] = useState(false)
+  const contactMethods = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: "邮件联系",
+      description: "商务合作与职业机会",
+      contact: "hello@example.com",
+      action: "mailto:hello@example.com",
+    },
+    {
+      icon: <MessageCircle className="w-6 h-6" />,
+      title: "微信交流",
+      description: "产品思维与行业交流",
+      contact: "WeChat ID: your_wechat",
+      action: "#",
+    },
+    {
+      icon: <Linkedin className="w-6 h-6" />,
+      title: "LinkedIn",
+      description: "专业网络与职业发展",
+      contact: "linkedin.com/in/yourprofile",
+      action: "https://linkedin.com/in/yourprofile",
+    },
+  ]
 
   const interests = [
     "产品经理职位机会",
@@ -26,7 +45,7 @@ export default function ContactPage() {
       {/* 导航栏 */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1B122C]/80 backdrop-blur-sm border-b border-[#A79FB4]/20">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/?explore=true">
+          <Link href="/">
             <Button variant="ghost" className="text-[#A79FB4] hover:text-[#FFD700]">
               <ArrowLeft className="w-4 h-4 mr-2" />
               返回星尘宇宙
@@ -58,46 +77,27 @@ export default function ContactPage() {
             <div>
               <h2 className="text-2xl font-bold font-['Manrope'] mb-6">联系方式</h2>
               <div className="space-y-4 mb-8">
-                <Card className="bg-[#A79FB4]/10 border-[#A79FB4]/30 hover:border-[#FFD700]/50 transition-colors">
-                  <CardContent className="p-4">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 rounded-full bg-[#FFD700] flex items-center justify-center text-[#1B122C]">
-                        <Linkedin className="w-6 h-6" />
+                {contactMethods.map((method, index) => (
+                  <Card
+                    key={index}
+                    className="bg-[#A79FB4]/10 border-[#A79FB4]/30 hover:border-[#FFD700]/50 transition-colors"
+                  >
+                    <CardContent className="p-4">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 rounded-full bg-[#FFD700] flex items-center justify-center text-[#1B122C]">
+                          {method.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-bold font-['Manrope']">{method.title}</h3>
+                          <p className="text-[#A79FB4] text-sm font-['Lora'] mb-1">{method.description}</p>
+                          <a href={method.action} className="text-[#FFD700] hover:underline text-sm">
+                            {method.contact}
+                          </a>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold font-['Manrope']">LinkedIn</h3>
-                        <p className="text-[#A79FB4] text-sm font-['Lora'] mb-1">专业网络与职业发展</p>
-                        {!showLinkedInInfo ? (
-                          <Button
-                            variant="ghost"
-                            className="text-[#FFD700] hover:text-[#FFD700]/80 p-0 h-auto font-normal text-sm"
-                            onClick={() => setShowLinkedInInfo(true)}
-                          >
-                            点击查看联系方式
-                          </Button>
-                        ) : (
-                          <div className="space-y-2">
-                            <a 
-                              href="https://www.linkedin.com/in/lingyizhu/?locale=en_US" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="text-[#FFD700] hover:underline text-sm block"
-                            >
-                              我的领英
-                            </a>
-                            <Button
-                              variant="ghost"
-                              className="text-[#A79FB4] hover:text-[#A79FB4]/80 p-0 h-auto font-normal text-xs"
-                              onClick={() => setShowLinkedInInfo(false)}
-                            >
-                              隐藏
-                            </Button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
 
               {/* 合作兴趣 */}
@@ -152,6 +152,34 @@ export default function ContactPage() {
                   </Button>
                 </CardContent>
               </Card>
+
+              {/* 社交链接 */}
+              <div className="mt-8 text-center">
+                <h3 className="text-lg font-bold font-['Manrope'] mb-4">社交媒体</h3>
+                <div className="flex justify-center space-x-4">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-[#A79FB4] text-[#A79FB4] hover:bg-[#A79FB4]/10 bg-transparent"
+                  >
+                    <Github className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-[#A79FB4] text-[#A79FB4] hover:bg-[#A79FB4]/10 bg-transparent"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-[#A79FB4] text-[#A79FB4] hover:bg-[#A79FB4]/10 bg-transparent"
+                  >
+                    <Twitter className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
 

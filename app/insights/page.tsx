@@ -78,7 +78,7 @@ export default function InsightsPage() {
       {/* 导航栏 */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1B122C]/80 backdrop-blur-sm border-b border-[#A79FB4]/20">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/">
+          <Link href="/?explore=true">
             <Button variant="ghost" className="text-[#A79FB4] hover:text-[#FFD700]">
               <ArrowLeft className="w-4 h-4 mr-2" />
               返回星尘宇宙

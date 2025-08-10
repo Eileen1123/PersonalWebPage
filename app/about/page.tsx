@@ -1,9 +1,12 @@
+"use client"
+
 import { ArrowLeft, Star, TrendingUp, Users, Zap, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import Image from "next/image"
+
+
 
 export default function AboutPage() {
   const skills = [
@@ -15,22 +18,28 @@ export default function AboutPage() {
 
   const journey = [
     {
-      phase: "数据启蒙",
-      period: "2020-2021",
-      description: "从传统业务分析师转向数据驱动思维，掌握Python和SQL，开始用数据讲故事。",
+      phase: "经济学知识奠基",
+      period: "2018.08 - 2021.12",
+      description: "在康涅狄格大学获得经济学理学学士学位。通过系统学习掌握宏观与微观分析框架，为数据分析领域培养坚实的逻辑与数理基础。",
       icon: <TrendingUp className="w-5 h-5" />,
     },
     {
-      phase: "产品觉醒",
-      period: "2021-2022",
-      description: "深入理解用户需求与商业价值的平衡，学会将数据洞察转化为产品功能。",
+      phase: "数据分析实践启蒙",
+      period: "2021.03 - 2022.05",
+      description: "在安永（EY）收集分析债券数据，接触金融监管领域；在中国建设银行金融科技部门分析用户行为数据，支持业务决策和产品优化。",
       icon: <Users className="w-5 h-5" />,
     },
     {
-      phase: "AIGC探索",
-      period: "2022-至今",
-      description: "拥抱AI时代，探索AIGC在产品设计和用户体验优化中的无限可能。",
+      phase: "应用数据科学深造",
+      period: "2022.09 - 2024.05",
+      description: "在波士顿大学攻读应用数据分析理学硕士学位，将编程、统计学与业务应用紧密结合，提升数据技能和分析视野。",
       icon: <Zap className="w-5 h-5" />,
+    },
+    {
+      phase: "产品支持与问题解决",
+      period: "2024.10 - 至今",
+      description: "作为产品支持分析师，专注于项目监控、技术支持和团队沟通，将分析能力应用于线上问题处理和运维流程。",
+      icon: <User className="w-5 h-5" />,
     },
   ]
 
@@ -39,7 +48,7 @@ export default function AboutPage() {
       {/* 导航栏 */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1B122C]/80 backdrop-blur-sm border-b border-[#A79FB4]/20">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/">
+          <Link href="/?explore=true">
             <Button variant="ghost" className="text-[#A79FB4] hover:text-[#FFD700]">
               <ArrowLeft className="w-4 h-4 mr-2" />
               返回星尘宇宙
@@ -60,13 +69,12 @@ export default function AboutPage() {
             <div className="text-center mb-12">
               <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#FFD700] to-[#A79FB4] p-1">
                 <div className="w-full h-full rounded-full bg-[#1B122C] flex items-center justify-center">
-                  <Image 
+                  <img 
                     src="/portrait.JPG" 
                     alt="个人头像" 
-                    width={128} 
-                    height={128} 
                     className="w-full h-full rounded-full object-cover"
                   />
+
                 </div>
               </div>
               <h1 className="text-4xl font-bold font-['Manrope'] mb-4">数据驱动的体验构建者</h1>

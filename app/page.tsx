@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Sparkles, User, Briefcase, Lightbulb, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -62,15 +62,66 @@ export default function HomePage() {
     },
   ])
 
+  // 检查URL参数，如果explore=true则直接显示星座导航
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search)
+      if (urlParams.get('explore') === 'true') {
+        setShowIntro(false)
+        // 恢复之前激活过的星座状态
+        const savedConstellations = localStorage.getItem('activatedConstellations')
+        if (savedConstellations) {
+          try {
+            const activatedIds = JSON.parse(savedConstellations)
+            setConstellations(prev => 
+              prev.map(constellation => ({
+                ...constellation,
+                activated: activatedIds.includes(constellation.id)
+              }))
+            )
+          } catch (error) {
+            console.error('Failed to parse saved constellations:', error)
+          }
+        }
+      }
+    }
+  }, [])
+
   const activateConstellation = (id: string) => {
-    setConstellations((prev) =>
-      prev.map((constellation) => (constellation.id === id ? { ...constellation, activated: true } : constellation)),
-    )
-    setSelectedConstellation(id)
+    setConstellations((prev) => {
+      const updated = prev.map((constellation) => 
+        constellation.id === id 
+          ? { ...constellation, activated: !constellation.activated } 
+          : constellation
+      )
+      
+      // 保存激活状态到本地存储
+      const activatedIds = updated.filter(c => c.activated).map(c => c.id)
+      localStorage.setItem('activatedConstellations', JSON.stringify(activatedIds))
+      
+      return updated
+    })
+    
+    // 如果点击的是当前选中的星座，则取消选中
+    if (selectedConstellation === id) {
+      setSelectedConstellation(null)
+    } else {
+      setSelectedConstellation(id)
+    }
   }
 
   const navigateToSection = (id: string) => {
     window.location.href = `/${id}`
+  }
+
+  const handleStartExplore = () => {
+    setShowIntro(false)
+    // 更新URL参数
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      url.searchParams.set('explore', 'true')
+      window.history.pushState({}, '', url)
+    }
   }
 
   return (
@@ -98,7 +149,7 @@ export default function HomePage() {
               <h1 className="text-4xl font-bold text-white mb-4 font-['Manrope']">数据驱动的体验构建者</h1>
               <p className="text-xl font-['Lora'] mb-8">滑动鼠标，从数据中发现我的故事</p>
               <Button
-                onClick={() => setShowIntro(false)}
+                onClick={handleStartExplore}
                 className="bg-[#FFD700] text-[#1B122C] hover:bg-[#FFD700]/90 font-['Manrope']"
               >
                 开始探索
@@ -175,7 +226,7 @@ export default function HomePage() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+                              onClick={(e: React.MouseEvent) => e.stopPropagation()}
               style={{ cursor: "none" }}
             >
               <Card className="w-96 bg-[#1B122C] border-[#A79FB4] text-white">

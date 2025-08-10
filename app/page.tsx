@@ -226,7 +226,7 @@ export default function HomePage() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                              onClick={(e: React.MouseEvent) => e.stopPropagation()}
               style={{ cursor: "none" }}
             >
               <Card className="w-96 bg-[#1B122C] border-[#A79FB4] text-white">

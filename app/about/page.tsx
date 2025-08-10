@@ -1,9 +1,12 @@
+"use client"
+
 import { ArrowLeft, Star, TrendingUp, Users, Zap, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import Image from "next/image"
+
+
 
 export default function AboutPage() {
   const skills = [
@@ -60,13 +63,12 @@ export default function AboutPage() {
             <div className="text-center mb-12">
               <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#FFD700] to-[#A79FB4] p-1">
                 <div className="w-full h-full rounded-full bg-[#1B122C] flex items-center justify-center">
-                  <Image 
+                  <img 
                     src="/portrait.JPG" 
                     alt="个人头像" 
-                    width={128} 
-                    height={128} 
                     className="w-full h-full rounded-full object-cover"
                   />
+
                 </div>
               </div>
               <h1 className="text-4xl font-bold font-['Manrope'] mb-4">数据驱动的体验构建者</h1>

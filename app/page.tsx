@@ -28,26 +28,27 @@ export default function HomePage() {
       name: "关于我",
       icon: <User className="w-6 h-6" />,
       description: "数据驱动的体验构建者",
-      x: 0.2,
+      x: 0.25,
       y: 0.3,
       activated: false,
     },
-    {
-      id: "projects",
-      name: "项目集",
-      icon: <Briefcase className="w-6 h-6" />,
-      description: "深度案例研究展示",
-      x: 0.7,
-      y: 0.25,
-      activated: false,
-    },
+    // 暂时隐藏项目集
+    // {
+    //   id: "projects",
+    //   name: "项目集",
+    //   icon: <Briefcase className="w-6 h-6" />,
+    //   description: "深度案例研究展示",
+    //   x: 0.7,
+    //   y: 0.25,
+    //   activated: false,
+    // },
     {
       id: "insights",
       name: "思考与实践",
       icon: <Lightbulb className="w-6 h-6" />,
       description: "AIGC探索与见解分享",
-      x: 0.6,
-      y: 0.7,
+      x: 0.75,
+      y: 0.4,
       activated: false,
     },
     {
@@ -55,7 +56,7 @@ export default function HomePage() {
       name: "联系我",
       icon: <Mail className="w-6 h-6" />,
       description: "开启合作对话",
-      x: 0.25,
+      x: 0.5,
       y: 0.75,
       activated: false,
     },
@@ -139,8 +140,9 @@ export default function HomePage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: constellation.activated ? 1 : 0.7 }}
                 >
-                  <h3 className="font-['Manrope'] font-semibold text-sm mb-1">{constellation.name}</h3>
-                  <p className="font-['Lora'] text-xs text-[#A79FB4]">{constellation.description}</p>
+                  <div className="font-['Manrope'] font-semibold text-sm text-white whitespace-nowrap">
+                    {constellation.name} - {constellation.description}
+                  </div>
                 </motion.div>
 
                 {/* 连接线效果 */}

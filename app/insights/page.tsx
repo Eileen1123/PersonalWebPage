@@ -1,41 +1,55 @@
-import { ArrowLeft, BookOpen, Lightbulb, Star, TrendingUp, Zap } from "lucide-react"
+"use client"
+
+import { ArrowLeft, BookOpen, Lightbulb, Star, TrendingUp, Zap, FileText, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function InsightsPage() {
+  const [selectedInsight, setSelectedInsight] = useState<any>(null)
+
   const insights = [
     {
-      id: "aigc-product-design",
-      title: "AIGC时代的产品设计新范式",
-      excerpt: "探索人工智能如何重新定义产品设计流程，从用户研究到原型验证的全链路变革。",
-      category: "AIGC实践",
-      readTime: "8分钟",
-      date: "2024年1月",
-      tags: ["产品设计", "AI工具", "用户体验"],
-      icon: <Zap className="w-5 h-5" />,
+      id: "ai-tech-concepts",
+      title: "AI技术概念与知识点",
+      excerpt: "系统梳理人工智能领域的核心概念、技术原理和关键知识点，为AI产品设计和应用提供理论基础。涵盖机器学习、深度学习、自然语言处理等前沿技术，帮助构建完整的AI知识体系。",
+      fullContent: "系统梳理人工智能领域的核心概念、技术原理和关键知识点，为AI产品设计和应用提供理论基础。涵盖机器学习、深度学习、自然语言处理等前沿技术，帮助构建完整的AI知识体系。",
+      category: "AI技术基础",
+      readTime: "12分钟",
+      date: "2025年7月",
+      tags: ["AI技术", "机器学习", "深度学习", "技术概念", "知识体系"],
+      icon: <Lightbulb className="w-5 h-5" />,
+      hasImage: true,
+      imagePath: "/AI技术概念与知识点.png"
     },
     {
-      id: "data-storytelling",
-      title: "数据叙事：让数字会说话的艺术",
-      excerpt: "如何将冰冷的数据转化为有温度的故事，在商业决策中发挥最大价值。",
-      category: "数据分析",
-      readTime: "6分钟",
-      date: "2023年12月",
-      tags: ["数据可视化", "商业洞察", "决策支持"],
-      icon: <TrendingUp className="w-5 h-5" />,
+      id: "mita-ai-analysis",
+      title: "AI产品体验分析报告：秘塔-今天学点啥",
+      excerpt: "通过深度体验和系统分析，探索秘塔AI产品在用户体验设计上的创新实践。从功能架构到交互细节，从用户引导到价值传递，全面剖析AI产品如何平衡技术能力与用户需求，为AI产品设计提供实践参考。",
+      fullContent: "通过深度体验和系统分析，探索秘塔AI产品在用户体验设计上的创新实践。从功能架构到交互细节，从用户引导到价值传递，全面剖析AI产品如何平衡技术能力与用户需求，为AI产品设计提供实践参考。\n\n秘塔AI作为国内领先的AI学习平台，其产品设计体现了对用户学习需求的深度理解。本报告将从以下几个维度进行分析：\n\n1. 产品定位与价值主张\n2. 功能架构与信息组织\n3. 交互设计与用户体验\n4. 内容策略与个性化推荐\n5. 技术实现与性能表现\n\n通过深入的产品分析，我们希望能够为AI产品设计者提供有价值的参考和启发。",
+      category: "AI产品分析",
+      readTime: "15分钟",
+      date: "2025年7月",
+      tags: ["AI产品", "用户体验", "产品分析", "秘塔AI", "深度洞察"],
+      icon: <FileText className="w-5 h-5" />,
+      hasPDF: true,
+      pdfPath: "/AI产品体验分析报告：秘塔-今天学点啥.pdf"
     },
     {
-      id: "user-research-ai",
-      title: "用户研究的AI增强：效率与深度的平衡",
-      excerpt: "结合传统用户研究方法与AI工具，在保持研究深度的同时大幅提升效率。",
-      category: "用户研究",
-      readTime: "10分钟",
-      date: "2023年11月",
-      tags: ["用户研究", "AI辅助", "研究方法"],
+      id: "douyin-product-principles",
+      title: "我的产品原则学习笔记-抖音",
+      excerpt: "深入分析抖音产品设计背后的核心原则和设计理念，从用户心理到产品架构，从内容分发到商业变现，系统梳理短视频平台的产品设计智慧。通过实际案例和深度思考，提炼出可复用的产品设计方法论。",
+      fullContent: "深入分析抖音产品设计背后的核心原则和设计理念，从用户心理到产品架构，从内容分发到商业变现，系统梳理短视频平台的产品设计智慧。\n\n本学习笔记基于对抖音产品的深度体验和思考，从以下几个维度进行分析：\n\n1. 产品定位与用户价值\n   - 短视频娱乐的重新定义\n   - 用户时间碎片化的解决方案\n   - 个性化推荐的精准匹配\n\n2. 内容生态与分发机制\n   - 算法驱动的智能推荐\n   - 创作者激励机制设计\n   - 内容质量与用户粘性的平衡\n\n3. 用户体验与交互设计\n   - 沉浸式浏览体验\n   - 简单直观的操作逻辑\n   - 情感化设计元素的应用\n\n4. 商业变现与生态平衡\n   - 广告与用户体验的平衡\n   - 电商生态的构建\n   - 创作者经济模式\n\n5. 产品原则的提炼与应用\n   - 用户第一的设计理念\n   - 数据驱动的决策机制\n   - 快速迭代的产品文化\n\n通过深入分析抖音的成功要素，我们能够学习到如何构建一个既满足用户需求又能实现商业价值的产品。这些原则不仅适用于短视频平台，也可以为其他类型的产品设计提供启发。",
+      category: "产品设计原则",
+      readTime: "20分钟",
+      date: "2025年7月",
+      tags: ["产品设计", "用户体验", "短视频", "抖音", "产品原则", "设计方法论"],
       icon: <BookOpen className="w-5 h-5" />,
-    },
+      hasPDF: true,
+      pdfPath: "/我的产品原则学习笔记-抖音.pdf"
+    }
   ]
 
   const practices = [
@@ -98,7 +112,8 @@ export default function InsightsPage() {
               {insights.map((insight) => (
                 <Card
                   key={insight.id}
-                  className="bg-[#A79FB4]/10 border-[#A79FB4]/30 hover:border-[#FFD700]/50 transition-colors cursor-pointer"
+                  className="bg-[#A79FB4]/10 border-[#A79FB4]/30 hover:border-[#FFD700]/50 transition-colors cursor-pointer flex flex-col h-full"
+                  onClick={() => setSelectedInsight(insight)}
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
@@ -111,24 +126,31 @@ export default function InsightsPage() {
                     </div>
                     <CardTitle className="font-['Manrope'] text-lg leading-tight">{insight.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-[#A79FB4] font-['Lora'] mb-4 leading-relaxed">{insight.excerpt}</p>
+                  <CardContent className="flex flex-col flex-1">
+                    <p className="text-[#A79FB4] font-['Lora'] mb-6 leading-relaxed">
+                      {insight.excerpt.length > 80 
+                        ? `${insight.excerpt.substring(0, 80)}...` 
+                        : insight.excerpt
+                      }
+                    </p>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {insight.tags.map((tag, index) => (
-                        <Badge
-                          key={index}
-                          variant="secondary"
-                          className="bg-[#FFD700]/20 text-white border-[#FFD700]/50 text-xs"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
+                    <div className="mt-auto">
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {insight.tags.map((tag, index) => (
+                          <Badge
+                            key={index}
+                            variant="secondary"
+                            className="bg-[#FFD700]/20 text-white border-[#FFD700]/50 text-xs"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
 
-                    <div className="flex justify-between items-center text-sm text-[#A79FB4]">
-                      <span>{insight.date}</span>
-                      <span>{insight.readTime}阅读</span>
+                      <div className="flex justify-between items-center text-sm text-[#A79FB4]">
+                        <span>{insight.date}</span>
+                        <span className="text-[#FFD700]">点击查看详情 →</span>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -185,6 +207,107 @@ export default function InsightsPage() {
           </div>
         </div>
       </div>
+
+      {/* 详情弹窗 */}
+      {selectedInsight && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+          onClick={() => setSelectedInsight(null)}
+        >
+          <div 
+            className="bg-[#1B122C] border border-[#A79FB4]/30 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-[#1B122C] border-b border-[#A79FB4]/30 p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-full bg-[#FFD700] flex items-center justify-center text-[#1B122C]">
+                    {selectedInsight.icon}
+                  </div>
+                  <div>
+                    <Badge variant="outline" className="border-[#FFD700] text-[#FFD700] mb-2">
+                      {selectedInsight.category}
+                    </Badge>
+                    <h2 className="text-2xl font-bold font-['Manrope']">{selectedInsight.title}</h2>
+                  </div>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSelectedInsight(null)}
+                  className="text-[#A79FB4] hover:text-white"
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              
+              <div className="flex items-center space-x-4 text-sm text-[#A79FB4]">
+                <span>{selectedInsight.date}</span>
+                <span>•</span>
+                <span>{selectedInsight.readTime}</span>
+              </div>
+            </div>
+
+                        <div className="p-6 overflow-y-auto flex-1">
+              {/* 图片预览 */}
+              {selectedInsight.hasImage && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-bold font-['Manrope'] mb-4 text-[#FFD700]">图片预览</h3>
+                  <div className="relative w-full max-w-2xl mx-auto">
+                    <img
+                      src={selectedInsight.imagePath}
+                      alt={selectedInsight.title}
+                      className="w-full h-auto rounded-lg border border-[#A79FB4]/30"
+                    />
+                  </div>
+                </div>
+              )}
+              
+              <div className="prose prose-invert max-w-none mb-8">
+                <div className="whitespace-pre-line text-[#A79FB4] font-['Lora'] leading-relaxed">
+                  {selectedInsight.fullContent}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedInsight.tags.map((tag, index) => (
+                  <Badge
+                    key={index}
+                    variant="secondary"
+                    className="bg-[#FFD700]/20 text-white border-[#FFD700]/50"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+
+              {/* 查看图片和PDF按钮 */}
+              <div className="flex space-x-4">
+                {selectedInsight.hasImage && (
+                  <Button
+                    variant="outline"
+                    className="border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700]/10"
+                    onClick={() => window.open(selectedInsight.imagePath, '_blank')}
+                  >
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    查看图片
+                  </Button>
+                )}
+                {selectedInsight.hasPDF && (
+                  <Button
+                    variant="outline"
+                    className="border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700]/10"
+                    onClick={() => window.open(selectedInsight.pdfPath, '_blank')}
+                  >
+                    <FileText className="w-4 h-4 mr-2" />
+                    查看PDF
+                  </Button>
+                  )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

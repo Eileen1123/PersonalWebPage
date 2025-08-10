@@ -70,7 +70,7 @@ export default function AboutPage() {
               <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#FFD700] to-[#A79FB4] p-1">
                 <div className="w-full h-full rounded-full bg-[#1B122C] flex items-center justify-center">
                   <img 
-                    src="/portrait.JPG" 
+                    src="/portrait.jpg" 
                     alt="个人头像" 
                     className="w-full h-full rounded-full object-cover"
                   />

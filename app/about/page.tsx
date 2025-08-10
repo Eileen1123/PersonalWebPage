@@ -18,22 +18,28 @@ export default function AboutPage() {
 
   const journey = [
     {
-      phase: "数据启蒙",
-      period: "2020-2021",
-      description: "从传统业务分析师转向数据驱动思维，掌握Python和SQL，开始用数据讲故事。",
+      phase: "经济学知识奠基",
+      period: "2018.08 - 2021.12",
+      description: "在康涅狄格大学获得经济学理学学士学位。通过系统学习掌握宏观与微观分析框架，为数据分析领域培养坚实的逻辑与数理基础。",
       icon: <TrendingUp className="w-5 h-5" />,
     },
     {
-      phase: "产品觉醒",
-      period: "2021-2022",
-      description: "深入理解用户需求与商业价值的平衡，学会将数据洞察转化为产品功能。",
+      phase: "数据分析实践启蒙",
+      period: "2021.03 - 2022.05",
+      description: "在安永（EY）收集分析债券数据，接触金融监管领域；在中国建设银行金融科技部门分析用户行为数据，支持业务决策和产品优化。",
       icon: <Users className="w-5 h-5" />,
     },
     {
-      phase: "AIGC探索",
-      period: "2022-至今",
-      description: "拥抱AI时代，探索AIGC在产品设计和用户体验优化中的无限可能。",
+      phase: "应用数据科学深造",
+      period: "2022.09 - 2024.05",
+      description: "在波士顿大学攻读应用数据分析理学硕士学位，将编程、统计学与业务应用紧密结合，提升数据技能和分析视野。",
       icon: <Zap className="w-5 h-5" />,
+    },
+    {
+      phase: "产品支持与问题解决",
+      period: "2024.10 - 至今",
+      description: "作为产品支持分析师，专注于项目监控、技术支持和团队沟通，将分析能力应用于线上问题处理和运维流程。",
+      icon: <User className="w-5 h-5" />,
     },
   ]
 
